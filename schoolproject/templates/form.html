@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hallo</title>
+
+</head>
+<body bgcolor="#F0F8FF">
+<style>
+.container {
+  height: 600px;
+  position: relative;
+  border: 5px solid green;
+}
+
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+
+<style>
+<!--/* Dropdown Button */-->
+<!--.btn {-->
+<!--  background-color: #2196F3;-->
+<!--  color: white;-->
+<!--  padding: 16px;-->
+<!--  font-size: 16px;-->
+<!--  border: none;-->
+<!--  outline: none;-->
+<!--}-->
+
+<!--/* The container <div> - needed to position the dropdown content */-->
+<!--.dropdown {-->
+<!--  position: absolute;-->
+<!--  display: inline-block;-->
+<!--}-->
+
+<!--/* Dropdown Content (Hidden by Default) */-->
+<!--.dropdown-content {-->
+<!--  display: none;-->
+<!--  position: absolute;-->
+<!--  background-color: #f1f1f1;-->
+<!--  min-width: 160px;-->
+<!--  z-index: 1;-->
+<!--}-->
+
+<!--/* Links inside the dropdown */-->
+<!--.dropdown-content a {-->
+<!--  color: black;-->
+<!--  padding: 12px 16px;-->
+<!--  text-decoration: none;-->
+<!--  display: block;-->
+<!--}-->
+
+<!--/* Change color of dropdown links on hover */-->
+<!--.dropdown-content a:hover {background-color: #ddd}-->
+
+<!--/* Show the dropdown menu on hover */-->
+<!--.dropdown:hover .dropdown-content {-->
+<!--  display: block;-->
+<!--}-->
+
+<!--/* Change the background color of the dropdown button when the dropdown content is shown */-->
+<!--.btn:hover, .dropdown:hover .btn  {-->
+<!--  background-color: #0b7dda;-->
+<!--}-->
+</style>
+
+
+<h2 style="color:red;"> FORM</h2>
+
+<form action="form" method="post" id="myForm" oninput="enableSubmit()" >
+
+    <div class="container">
+      <div class="center">
+    {% csrf_token %}
+        <label>Name:</label>
+        <input type="text"  name="name" required><br>
+
+        <label >Email:</label>
+        <input type="email" name="email" required><br>
+        <br>
+
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label><br>
+
+        <label>address:</label>
+        <input type="text"  name="address" required><br>
+
+
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" onchange="calculateAge()" required><br>
+
+        <!-- Age Input (Read-only) -->
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" readonly><br>
+
+        <!-- Other Form Fields (Add more as needed) -->
+
+        <!-- Department Dropdown -->
+        <label for="department">Choose a Department:</label>
+        <select id="department" name="department" onchange="updateCoursesDropdown()" required>
+            <option value="">Select Department</option>
+            <option value="commerce">Commerce</option>
+            <option value="science">Science</option>
+            <option value="arts">Arts</option>
+            <option value="engineering">Engineering</option>
+            <!-- Add more departments as needed -->
+        </select><br>
+
+        <!-- Courses Dropdown (Dependent on Department) -->
+        <label for="courses">Choose a Course:</label>
+        <select id="courses" name="courses" required>
+            <option value="">Select Department First</option>
+            <!-- Options will be dynamically populated based on the selected department -->
+        </select><br>
+
+        <!-- Other Form Fields (Add more as needed) -->
+                <!-- Purpose Dropdown -->
+        <label for="purpose">Select a Purpose:</label>
+        <select id="purpose" name="purpose" required>
+            <option value="">Select a Purpose</option>
+            <option value="ForEnquiry">For Enquiry</option>
+            <option value="PlaceOrder">Place Order</option>
+            <option value="Return">Return</option>
+            <!-- Add more purposes as needed -->
+        </select><br>
+        <!-- Submit Button -->
+<!--        <input type="submit" value="Submit">-->
+
+        <h4>Select Materials Provided</h4>
+                <label for="debit-note-book">Debit Note Book:</label>
+        <input type="checkbox" id="debit-note-book" name="materials" value="Debit Note Book"><br>
+
+        <!-- Checkbox for Pen -->
+        <label for="pen">Pen:</label>
+        <input type="checkbox" id="pen" name="materials[]" value="Pen"><br>
+
+        <!-- Checkbox for Exam Papers -->
+        <label for="exam-papers">Exam Papers:</label>
+        <input type="checkbox" id="exam-papers" name="materials[]" value="Exam Papers"><br>
+
+        <!-- Add more materials checkboxes as needed -->
+
+        <!-- Submit Button -->
+          <button type="reset" id="submitButton" value="submit" onclick="location.href='{% url 'schoolapp:page' %}'" disabled>
+              submit
+          </button>
+          <br>
+
+      </div>
+        </div>
+    </form>
+<script src="{% static 'assets/js/form.js' %}"></script>
+<script src="{% static 'assets/js/dob.js' %}"></script>
+<script src="{% static 'assets/js/enablebutton.js' %}"></script>
+<link rel="stylesheet" href="{% static 'assets/css/form.css' %}">
+
+  </div>
+</div>
+
+</body>
+</html>

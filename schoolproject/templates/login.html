@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+</head>
+<body id="bg" style="background-image:url('{% static "image/loginform.jpg"%}');">
+<style>
+.container {
+  background-color: rgba(255, 255, 255, 0.8);
+<!--  height: 600px;-->
+<!--  position: relative;-->
+<!--  border: 3px solid green;-->
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.center_up {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+</style>
+
+        <div class="center_up">
+            <h2>login</h2>
+        </div>
+
+
+    <div class="container">
+            <div class="center">
+                <form action="login" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="enter your userName"> <br>
+                    <input type="password" name="password" placeholder="enter your password"><br>
+                    <input type="submit">
+                    <button><a href="{% url 'schoolapp:register' %}" class="btn btn-primary btn-sm" >register</a></button>
+
+
+
+                </form>
+
+            </div>
+    </div>
+</body>
+</html>

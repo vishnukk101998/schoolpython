@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page</title>
+    <style>
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+</head>
+<body id="bg" style="background-image:url('{% static "image/cricket.jpg"%}');">
+          <button type="reset" onclick="location.href='{% url 'schoolapp:logout' %}'">
+              logout
+          </button>
+</body>
+</html>
